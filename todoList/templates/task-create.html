@@ -1,3 +1,4 @@
+{% comment %} form.as_p make better formate form {% endcomment %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -7,23 +8,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>new task</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <a href='task-create/'>add a new task</a>
-        <br>
-        {%for task in all_tasks%}
-        
-        {{task.title}} <a href="task/{{task.id}}/">view</a> <a href="taskUpdate/{{task.id}}/">edit</a> <a href="taskDelete/{{task.id}}/">delete</a>
-        
-        <br> 
-        {% empty %}
-        <h1>No task avalable</h1>
-        {% endfor %}
-
+        <a href ="/">go back</a>
+        <form action = "" method= 'post'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type = submit> 
+        </form>
         
         <script src="" async defer></script>
     </body>

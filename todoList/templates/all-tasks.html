@@ -13,11 +13,19 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        {% if request.user.is_authenticated %}
+        <h1>{{request.user}}</h1>
+        <a href="logout/">log out</a>
+        {%else%}
+        <a href="login/">log ig</a>
+        {%endif%}
+        <hr>
+        {% comment %} {{color}} {% endcomment %}
         <a href='task-create/'>add a new task</a>
         <br>
         {%for task in all_tasks%}
         
-        {{task.title}} <a href="task/{{task.id}}/">view</a> <a href="taskUpdate/{{task.id}}/">edit</a> <a href="taskDelete/{{task.id}}/">delete</a>
+        {{task.title}} {{task.id}} <a href="task/{{task.id}}/">view</a> <a href="taskUpdate/{{task.id}}/">edit</a> <a href="taskDelete/{{task.id}}/">delete</a>
         
         <br> 
         {% empty %}
